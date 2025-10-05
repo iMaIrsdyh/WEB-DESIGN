@@ -15,10 +15,10 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(assetsToCache))
   );
-  self.skipWaiting(); // penting agar SW langsung aktif
+  self.skipWaiting(); // agar SW langsung aktif
 });
 
-// Activate: bersihkan cache lama
+// Membersihkan cache lama
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -28,7 +28,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch: gunakan cache jika offline
+// gunakan cache jika offline
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request).catch(() => caches.match(event.request).then((response) => {
