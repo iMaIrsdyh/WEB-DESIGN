@@ -1,7 +1,7 @@
 {
   "name": "Website iMa - Karimah Irsyadiyah",
   "short_name": "iMa",
-  "start_url": "/WEB-DESIGN/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#3a1c71",
   "theme_color": "#ff4ecd",

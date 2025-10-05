@@ -2,12 +2,13 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home | Website Pribadi</title>
     <link rel="stylesheet" href="css/home.css">
-    <!-- ICONS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- APP ICONS & MANIFEST -->
     <link rel="icon" type="image/png" sizes="192x192" href="icon/iMaBrand192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="icon/iMaBrand512.png">
     <link rel="manifest" href="manifest.json">
@@ -28,7 +29,7 @@
             <button class="search-button" type="submit">Search</button>
         </form>
     </nav>
-    </header>
+
     <main class="main-section">
         <section class="main-content">
             <div class="subtitle">Saya</div>
@@ -50,13 +51,13 @@
             <div class="blob"></div>
         </section>
     </main>
-    <div class="scroll-down">
-        <i class="fa-solid fa-angle-down"></i>
-    </div>
+
+    <div class="scroll-down"><i class="fa-solid fa-angle-down"></i></div>
+
+    <!-- PWA Install Script -->
     <script>
         let deferredPrompt;
 
-        // Simpan event install prompt
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
@@ -64,17 +65,20 @@
             // Buat tombol install
             const installBtn = document.createElement('button');
             installBtn.textContent = 'Install iMa App';
-            installBtn.style.position = 'fixed';
-            installBtn.style.bottom = '20px';
-            installBtn.style.right = '20px';
-            installBtn.style.zIndex = '9999';
-            installBtn.style.padding = '12px 20px';
-            installBtn.style.background = '#ff4ecd';
-            installBtn.style.color = 'white';
-            installBtn.style.border = 'none';
-            installBtn.style.borderRadius = '10px';
-            installBtn.style.cursor = 'pointer';
-            installBtn.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+            installBtn.setAttribute('aria-label', 'install');
+            Object.assign(installBtn.style, {
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+                zIndex: '9999',
+                padding: '12px 20px',
+                background: '#ff4ecd',
+                color: 'white',
+                border: 'none',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+            });
 
             document.body.appendChild(installBtn);
 
@@ -82,26 +86,24 @@
                 installBtn.remove();
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    console.log('✅ Pengguna setuju meng-install PWA');
-                } else {
-                    console.log('❌ Pengguna menolak install');
-                }
+                console.log(outcome === 'accepted'
+                    ? '✅ Pengguna setuju meng-install PWA'
+                    : '❌ Pengguna menolak install');
                 deferredPrompt = null;
             });
         });
 
-        // Saat PWA sudah ter-install
         window.addEventListener('appinstalled', () => {
             console.log('🎉 PWA sudah di-install');
+            const installBtn = document.querySelector('button[aria-label="install"]');
+            if (installBtn) installBtn.remove();
         });
     </script>
 
+    <!-- Info PWA -->
     <section class="pwa-info">
         <div class="pwa-card">
-            <div class="pwa-icon">
-                <i class="fa-solid fa-mobile-screen-button"></i>
-            </div>
+            <div class="pwa-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
             <div class="pwa-content">
                 <div class="pwa-title">
                     Website ini sudah menjadi <strong>Progressive Web App (PWA)</strong>!
@@ -112,9 +114,11 @@
             </div>
         </div>
     </section>
+
+    <!-- Register Service Worker -->
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
+            navigator.serviceWorker.register('/service-worker.js')
                 .then(reg => console.log('✅ Service Worker terdaftar:', reg))
                 .catch(err => console.log('❌ Gagal daftar Service Worker:', err));
         }
