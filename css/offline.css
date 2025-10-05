@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #2a0d45;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+h1 {
+  color: #ff4ecd;
+}
+
+const assetsToCache = [
+  './',
+  'index.html',
+  'about.html',
+  'contact.html',
+  'offline.html',
+  'manifest.json',
+  'css/offline.css',          
+  'icon/iMaBrand192.png',
+  'icon/iMaBrand512.png'
+];

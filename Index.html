@@ -5,293 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Website Pribadi</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background: radial-gradient(ellipse at 70% 30%, #3a1c71 0%, #d76d77 40%, #2b2b2b 100%);
-            color: #fff;
-            font-family: 'Montserrat', Arial, sans-serif;
-            overflow-x: hidden;
-        }
-
-        nav {
-            background: rgba(20, 20, 30, 0.92);
-            padding: 22px 48px 22px 36px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 24px 0 #00000044;
-            border-radius: 0 0 32px 32px;
-        }
-
-        nav .brand {
-            font-weight: 900;
-            font-size: 1.5em;
-            letter-spacing: 2px;
-            color: #fff;
-            margin-right: 32px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 32px;
-            font-weight: 600;
-            font-size: 1.08em;
-            padding: 6px 0;
-            border-bottom: 2px solid transparent;
-            transition: color 0.2s, border-bottom 0.2s;
-        }
-
-        nav a.active,
-        nav a:hover {
-            color: #ff4ecd;
-            border-bottom: 2px solid #ff4ecd;
-        }
-
-        .search-form {
-            margin-left: 24px;
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 2px 8px;
-            box-shadow: 0 0 6px #ff4ecd33;
-        }
-
-        .search-input {
-            padding: 6px 10px;
-            border-radius: 16px;
-            border: none;
-            background: transparent;
-            color: #fff;
-            font-size: 1em;
-            outline: none;
-            width: 110px;
-            transition: width 0.3s;
-        }
-
-        .search-input:focus {
-            width: 160px;
-            background: #fff;
-            color: #2b2b2b;
-        }
-
-        .search-button {
-            padding: 6px 14px;
-            border: none;
-            border-radius: 16px;
-            background: linear-gradient(90deg, #ff4ecd 0%, #6a82fb 100%);
-            color: #fff;
-            font-weight: bold;
-            cursor: pointer;
-            margin-left: 7px;
-            font-family: 'Montserrat', Arial, sans-serif;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .search-button:hover {
-            background: linear-gradient(90deg, #6a82fb 0%, #ff4ecd 100%);
-            color: #fff;
-        }
-
-        .main-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 80vh;
-            padding: 0 8vw;
-            margin-top: 30px;
-        }
-
-        .main-content {
-            max-width: 520px;
-        }
-
-        .main-content .subtitle {
-            font-size: 1.1em;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #ff4ecd;
-            margin-bottom: 12px;
-        }
-
-        .main-content .title {
-            font-size: 3.2em;
-            font-weight: 900;
-            letter-spacing: 2px;
-            line-height: 1.1;
-            margin-bottom: 12px;
-        }
-
-        .main-content .desc {
-            font-size: 1.1em;
-            color: #e0e0e0;
-            margin-bottom: 28px;
-            line-height: 1.6;
-        }
-
-        .main-content .cta-btn {
-            background: linear-gradient(90deg, #ff4ecd 0%, #6a82fb 100%);
-            color: #fff;
-            border: none;
-            border-radius: 20px;
-            padding: 12px 32px;
-            font-weight: bold;
-            font-size: 1.08em;
-            cursor: pointer;
-            margin-right: 14px;
-            margin-bottom: 18px;
-            box-shadow: 0 2px 12px #ff4ecd44;
-            transition: background 0.2s;
-        }
-
-        .main-content .cta-btn:hover {
-            background: linear-gradient(90deg, #6a82fb 0%, #ff4ecd 100%);
-        }
-
-        .main-content .socials {
-            margin-top: 18px;
-        }
-
-        .main-content .socials a {
-            color: #fff;
-            margin-right: 18px;
-            font-size: 1.4em;
-            transition: color 0.2s;
-        }
-
-        .main-content .socials a:hover {
-            color: #ff4ecd;
-        }
-
-        .main-visual {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .main-visual .blob {
-            width: 370px;
-            height: 370px;
-            background: radial-gradient(circle at 60% 40%, #ff4ecd 0%, #6a82fb 60%, #2b2b2b 100%);
-            border-radius: 50% 60% 70% 50% / 60% 50% 70% 60%;
-            filter: blur(0.5px);
-            box-shadow: 0 0 80px 10px #ff4ecd88, 0 0 120px 40px #6a82fb44;
-            animation: blobMove 8s infinite alternate ease-in-out;
-        }
-
-        @keyframes blobMove {
-            0% {
-                border-radius: 50% 60% 70% 50% / 60% 50% 70% 60%;
-                transform: scale(1) rotate(0deg);
-            }
-
-            100% {
-                border-radius: 60% 50% 60% 70% / 50% 70% 60% 50%;
-                transform: scale(1.07) rotate(8deg);
-            }
-        }
-
-        .scroll-down {
-            position: absolute;
-            left: 50%;
-            bottom: 36px;
-            transform: translateX(-50%);
-            color: #fff;
-            opacity: 0.7;
-            font-size: 1.5em;
-            text-align: center;
-            letter-spacing: 1px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-
-            50% {
-                transform: translateX(-50%) translateY(12px);
-            }
-        }
-
-        @media (max-width: 900px) {
-            .main-section {
-                flex-direction: column;
-                padding: 0 4vw;
-                min-height: 70vh;
-            }
-
-            .main-visual {
-                margin-top: 40px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 18px 10px;
-                border-radius: 0 0 18px 18px;
-            }
-
-            .main-section {
-                flex-direction: column;
-                padding: 0 2vw;
-            }
-
-            .main-content .title {
-                font-size: 2em;
-            }
-
-            .main-visual .blob {
-                width: 220px;
-                height: 220px;
-            }
-        }
-
-        .search-form {
-            margin-left: auto;
-            /* Pindahkan ke kanan */
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 2px 8px;
-            box-shadow: 0 0 6px #ff4ecd33;
-        }
-
-        /* Responsif untuk search di navbar */
-        @media (max-width: 900px) {
-            .search-form {
-                margin-left: 0;
-                margin-top: 12px;
-                width: 100%;
-                justify-content: flex-end;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 18px 10px;
-                border-radius: 0 0 18px 18px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/home.css">
     <!-- ICONS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon/iMaBrand192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon/iMaBrand512.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff4ecd">
 </head>
 
 <body>
     <nav>
-        <div class="brand">iMa</div>
+        <div class="brand">
+            <img src="icon/iMaBrand512.png" alt="iMa Logo"
+                style="height:38px;width:38px;border-radius:12px;vertical-align:middle;">
+        </div>
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
@@ -329,6 +57,74 @@
     <div class="scroll-down">
         <i class="fa-solid fa-angle-down"></i>
     </div>
+    <script>
+        let deferredPrompt;
+
+        // Simpan event install prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            // Buat tombol install
+            const installBtn = document.createElement('button');
+            installBtn.textContent = 'Install iMa App';
+            installBtn.style.position = 'fixed';
+            installBtn.style.bottom = '20px';
+            installBtn.style.right = '20px';
+            installBtn.style.zIndex = '9999';
+            installBtn.style.padding = '12px 20px';
+            installBtn.style.background = '#ff4ecd';
+            installBtn.style.color = 'white';
+            installBtn.style.border = 'none';
+            installBtn.style.borderRadius = '10px';
+            installBtn.style.cursor = 'pointer';
+            installBtn.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+
+            document.body.appendChild(installBtn);
+
+            installBtn.addEventListener('click', async () => {
+                installBtn.remove();
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    console.log('✅ Pengguna setuju meng-install PWA');
+                } else {
+                    console.log('❌ Pengguna menolak install');
+                }
+                deferredPrompt = null;
+            });
+        });
+
+        // Saat PWA sudah ter-install
+        window.addEventListener('appinstalled', () => {
+            console.log('🎉 PWA sudah di-install');
+        });
+    </script>
+
+    <section class="pwa-info">
+        <div class="pwa-card">
+            <div class="pwa-icon">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <div class="pwa-content">
+                <div class="pwa-title">
+                    Website ini sudah menjadi <strong>Progressive Web App (PWA)</strong>!
+                </div>
+                <div class="pwa-desc">
+                    Kamu bisa <b>menginstalnya</b> di perangkatmu dan tetap mengaksesnya walau tanpa internet.
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('✅ Service Worker terdaftar:', reg))
+                .catch(err => console.log('❌ Gagal daftar Service Worker:', err));
+        }
+    </script>
+
+
 </body>
 
 </html>
